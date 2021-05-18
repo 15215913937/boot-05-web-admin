@@ -24,6 +24,7 @@
             <tr th:each="user,states:${users}">
 <!--                count从1开始计数，index从0开始计数-->
                 <td th:text="${states.count}">id</td>
+<!--                  两种内容写法-->
                 <td th:text="${user.username}"></td>
                 <td>[[${user.password}]]</td>
             </tr>
