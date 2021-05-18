@@ -17,14 +17,14 @@ import org.springframework.context.annotation.Import;
 //2、把这个Car这个组件自动注册到容器中
 public class MyConfig {
 
-    @Bean
-    public User user01(){
-        User zhangsan = new User("zhangsan",18);
-        zhangsan.setPet(tomcatPet());
-        return zhangsan;
-    }
-    @Bean(name = "tom")
-    public Pet tomcatPet(){
-        return new Pet("tomcat",30.0);
-    }
+//    @Bean
+//    public User user01(){
+//        User zhangsan = new User("zhangsan",18);
+//        zhangsan.setPet(tomcatPet());
+//        return zhangsan;
+//    }
+//    @Bean(name = "tom")
+//    public Pet tomcatPet(){
+//        return new Pet("tomcat",30.0);
+//    }
 }

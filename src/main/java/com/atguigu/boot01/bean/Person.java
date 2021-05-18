@@ -10,20 +10,27 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-@ConfigurationProperties(prefix = "person")
-@Component
+//@ConfigurationProperties(prefix = "person")
+//@Component
+//@Data
+//@ToString
+//public class Person {
+//
+//    private String userName;
+//    private Boolean boss;
+//    private Date birth;
+//    private Integer age;
+//    private Pet pet;
+//    private String[] interests;
+//    private List<String> animal;
+//    private Map<String, Object> score;
+//    private Set<Double> salarys;
+//    private Map<String, List<Pet>> allPets;
+//}
 @Data
-@ToString
-public class Person {
-
+public class Person{
     private String userName;
-    private Boolean boss;
-    private Date birth;
     private Integer age;
+    private Date birth;
     private Pet pet;
-    private String[] interests;
-    private List<String> animal;
-    private Map<String, Object> score;
-    private Set<Double> salarys;
-    private Map<String, List<Pet>> allPets;
 }
