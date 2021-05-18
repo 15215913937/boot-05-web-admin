@@ -1,6 +1,7 @@
 package com.atguigu.boot05webadmin.controller;
 
 import com.atguigu.boot05webadmin.bean.User;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
-
+@Slf4j
 @Controller
 public class IndexController {
     //登录页面
@@ -34,14 +35,15 @@ public class IndexController {
     //去主页面
     @GetMapping("/index")
     public String mainPage(HttpSession session,Model model){
+        log.info("当前方法是{}","mainPage");
         //是否登陆。使用拦截器机制或者过滤器
-        Object loginUser = session.getAttribute("loginUser");
-        if(loginUser!=null){
-            return "index";
-        }else {
-            model.addAttribute("msg","请重新登录");
-            return "login";
-        }
-
+//        Object loginUser = session.getAttribute("loginUser");
+//        if(loginUser!=null){
+//            return "index";
+//        }else {
+//            model.addAttribute("msg","请重新登录");
+//            return "login";
+//        }
+        return "index";
     }
 }
