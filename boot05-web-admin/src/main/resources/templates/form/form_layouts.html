@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>layouts</title>
+</head>
+<body>
+<h1>form_layouts</h1>
+<header th:replace="common::#header_user"></header>
+<div th:replace="common::common_table"></div>
+<div>
+<!--    文件上传表单设置-->
+    <form role="form" th:action="@{/upload}" method="post" enctype="multipart/form-data">
+        <div>
+            <label>邮箱</label>
+            <input type="text" name="email" value="">
+        </div>
+        <div>
+            <label>姓名</label>
+            <input type="text" name="username" value="">
+        </div>
+        <div>
+            <label>头像</label>
+            <input type="file" name="headerImg">
+        </div>
+        <div>
+            <label>生活照</label>
+            <input type="file" name="photos" multiple>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox">记住我？</label>
+        </div>
+        <button type="submit">提交</button>
+    </form>
+</div>
+
+</body>
+</html>

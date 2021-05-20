@@ -9,8 +9,8 @@
     <div id="header_user">
         <ul>
             <li>
-                    <!--    行内使用双中括号-->
-                    欢迎[[${session.loginUser.username}]]！
+                <!--    行内使用双中括号-->
+                欢迎[[${session.loginUser.username}]]！
             </li>
             <li>
                 <a th:href="@{/}">Log Out</a>
@@ -20,14 +20,29 @@
     </div>
 
 </header>
-<div th:fragment="common_table">
-    <ul>
-        <li><a th:href="@{/index}">index</a></li>
-        <li><a th:href="@{/basic}">basic</a></li>
-        <li><a th:href="@{/dynamic}">dynamic</a></li>
-        <li><a th:href="@{/editable}">editable</a></li>
-    </ul>
-</div>
+<section>
+    <div th:fragment="common_table">
+        <ul>
+            <li>form
+                <ul>
+                    <li><a th:href="@{/form_layouts}">form_layouts</a></li>
+                </ul>
+            </li>
+            <li>table</li>
+        </ul>
+        <ul>
+            <li>form
+                <ul>
+                    <li><a th:href="@{/index}">index</a></li>
+                    <li><a th:href="@{/basic}">basic</a></li>
+                    <li><a th:href="@{/dynamic}">dynamic</a></li>
+                    <li><a th:href="@{/editable}">editable</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</section>
+
 
 </body>
 </html>

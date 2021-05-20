@@ -2,6 +2,9 @@ package com.atguigu.boot05webadmin.controller;
 
 import com.atguigu.boot05webadmin.bean.User;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -12,6 +15,10 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 @Controller
 public class IndexController {
+
+    @Autowired
+    StringRedisTemplate redisTemplate;
+
     //登录页面
     @GetMapping(value = {"/login","/"})
     public String loginPage(){
@@ -21,7 +28,7 @@ public class IndexController {
     @PostMapping("/login")
     public String indexPage(User user, HttpSession session, Model model){
         //判断账户密码不为空
-        if(StringUtils.hasLength(user.getUsername())&&"123456".equals(user.getPassword())){
+        if(StringUtils.hasLength(user.getUsername())&&"123".equals(user.getPassword())){
             //把登陆成功的用户储存起来
             session.setAttribute("loginUser",user);
             //登陆成功，重定向到index.html页面；防止表单重复提交
@@ -44,6 +51,11 @@ public class IndexController {
 //            model.addAttribute("msg","请重新登录");
 //            return "login";
 //        }
+        ValueOperations<String, String> opsForValue = redisTemplate.opsForValue();
+        String s = opsForValue.get("/index");
+        String s1 = opsForValue.get("/basic");
+        model.addAttribute("indexCount",s);
+        model.addAttribute("basicCount",s1);
         return "index";
     }
 }

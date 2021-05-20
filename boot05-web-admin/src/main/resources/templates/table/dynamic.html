@@ -9,28 +9,50 @@
 <!--repplace直接将header标签里的内容替换为common页面下的id标签为header_user的内容-->
 <header th:replace="common::#header_user"></header>
 <!--repplace直接将div标签里的内容替换为common页面下的碎片fragment标签为common_table的内容-->
-<div th:replace="common::common_table"></div>
+<section th:replace="common::common_table"></section>
 
 <div>
     <table>
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>用户名</th>
-                <th>密码</th>
-            </tr>
+        <tr>
+            <th>#</th>
+            <th>ID</th>
+            <th>name</th>
+            <th>age</th>
+            <th>email</th>
+            <th>操作</th>
+        </tr>
         </thead>
         <tbody>
-            <tr th:each="user,states:${users}">
-<!--                count从1开始计数，index从0开始计数-->
-                <td th:text="${states.count}">id</td>
-<!--                  两种内容写法-->
-                <td th:text="${user.username}"></td>
-                <td>[[${user.password}]]</td>
-            </tr>
-
+        <tr th:each="user:${page.records}">
+            <td th:text="${user.id}">id</td>
+            <td th:text="${user.name}">name</td>
+            <td th:text="${user.age}">age</td>
+            <td th:text="${user.email}">email</td>
+            <td>
+                <a type="button" th:href="@{/user/delete/{id}(id=${user.id},pn=${page.current})}">删除</a>
+            </td>
+        </tr>
         </tbody>
     </table>
+    <div>
+        <div>
+            <div>
+                当前第 [[${page.current}]] 页，总计 [[${page.pages}]] 页，共 [[${page.total}]] 条记录
+            </div>
+        </div>
+        <div>
+            <div>
+                <ul>
+                    <li><a href="#"><- Previous</a></li>
+                    <li th:class="${num == page.current?'active':''}" th:each="num:${#numbers.sequence(1,page.pages)}">
+                        <a th:href="@{/dynamic(pn=${num})}">[[${num}]]</a>
+                    </li>
+                    <li><a href="#">Next -></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
